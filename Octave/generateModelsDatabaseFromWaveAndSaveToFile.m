@@ -62,7 +62,7 @@ function modelsDatabase = generateModelsDatabaseFromWaveAndSaveToFile(fileNameLi
 % *************************************************************************
 % 
     % Generate models
-    modelsDatabase = generateModelsDatabase(fileNameList);
+    modelsDatabase = generateModelsDatabaseFromWave(fileNameList);
 
     % Save to file
     saveDatabaseToFile(modelsDatabase,fileNameDataBase);
