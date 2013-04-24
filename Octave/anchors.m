@@ -1,4 +1,8 @@
 function [centers, mincenter, mindist, lower, computed] = anchors(firstcenter,k,data)
+%
+% This code is provided by Charles Elkan:
+% http://cseweb.ucsd.edu/~elkan/fastkmeans.html
+%
 % choose k centers by the furthest-first method
 
 [n,dim] = size(data);

@@ -14,7 +14,12 @@ listModels{4,1} = 'Mathieu Labbé';
 listModels{4,2} = '../Samples/SoundsForTraining/mathieu_labbe.wav';
 
 % The models are generated, and saved to the file modelDatabase.txt
-modelsDatabase = generateModelsDatabaseAndSaveToFile(listModels, 'modelDatabase.txt');
+% If the files are in RAW format (16-bit signed, 8 channels), you can use
+% this call instead:
+%
+% modelsDatabase = generateModelsDatabaseFromRawAndSaveToFile(listModels, 'modelDatabase.txt');
+%
+modelsDatabase = generateModelsDatabaseFromWaveAndSaveToFile(listModels, 'modelDatabase.txt');
 
 % Here we create a list of file to test, which contains both the paths for
 % separated and postfiltered sound streams

@@ -1,5 +1,44 @@
 function [va] = generateVAD(xPower, teta, frameSize, ts)
-
+%
+% *************************************************************************
+% *                                                                       *
+% * Project: WISS                                                         *
+% * Author: François Grondin                                              *
+% * Version: 1.0.0                                                        *
+% * Date: 24/04/2013                                                      *
+% *                                                                       *
+% *************************************************************************
+% *                                                                       *
+% * License:                                                              *
+% *                                                                       *
+% * WISS is free software: you can redistribute it and/or modify it under *
+% * the terms of the GNU General Public License as published by the Free  *
+% * Software Foundation, either version 3 of the License, or (at your     *
+% * option) any later version. WISS is distributed in the hope that it    *
+% * will be useful, but WITHOUT ANY WARRANTY; without even the implied    *
+% * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  *
+% * the GNU General Public License for more details. You should have      *
+% * received a copy of the GNU General Public License along with WISS.    *
+% * If not, see http://www.gnu.org/licenses/.                             *
+% *                                                                       *
+% ************************************************************************* 
+% *                                                                       *
+% * Inputs:  xPower          Instantaneous power of the signal            *
+% *          teta            Prefiltering detection level                 *
+% *          frameSize       Number of samples in one frame               *
+% *          ts              VAD detection level                          *
+% *                                                                       *
+% * Outputs: va              Binary vector with voice activity            *
+% *                                                                       *
+% ************************************************************************* 
+% *                                                                       *
+% * Description:                                                          * 
+% *                                                                       * 
+% * The function returns a vector with has values 0 or 1 for each frame   *
+% * if voice is detected or not.                                          *
+% *                                                                       *
+% *************************************************************************
+% 
     h_local = generateHanning(floor(frameSize/341));
     h_global = generateHanning(floor(frameSize/34));
     h_frame = generateHanning(frameSize);

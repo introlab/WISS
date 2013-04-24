@@ -1,4 +1,49 @@
 function [activeFeatures, activeMask, noiseMask, Hl, Bl] = generateFeaturesForTesting(xSeparated, xPostfiltered, hopSize, frameSize, Fs, window)
+%
+% *************************************************************************
+% *                                                                       *
+% * Project: WISS                                                         *
+% * Author: François Grondin                                              *
+% * Version: 1.0.0                                                        *
+% * Date: 24/04/2013                                                      *
+% *                                                                       *
+% *************************************************************************
+% *                                                                       *
+% * License:                                                              *
+% *                                                                       *
+% * WISS is free software: you can redistribute it and/or modify it under *
+% * the terms of the GNU General Public License as published by the Free  *
+% * Software Foundation, either version 3 of the License, or (at your     *
+% * option) any later version. WISS is distributed in the hope that it    *
+% * will be useful, but WITHOUT ANY WARRANTY; without even the implied    *
+% * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See  *
+% * the GNU General Public License for more details. You should have      *
+% * received a copy of the GNU General Public License along with WISS.    *
+% * If not, see http://www.gnu.org/licenses/.                             *
+% *                                                                       *
+% ************************************************************************* 
+% *                                                                       *
+% * Inputs:  xSeparated      Vector with separated audio stream           *
+% *          xPostfiltered   Vector with post-filtered audio stream       *
+% *          hopSize         Size of the hop in samples                   *
+% *          frameSize       Size of the frame in samples                 *
+% *          Fs              Sample rate (Samples/sec)                    *
+% *          window          Vector witch holds the analysis window       *
+% *                                                                       *
+% * Outputs: activeFeatures  Matrix with generated features               *
+% *          activeMask      Matrix with generated mask                   *
+% *          noiseMask       Matrix with generated noise mask             *
+% *          Hl              Vector with estimated convolutive noise      *
+% *          Bl              Vector with estimated additive noise         *
+% *                                                                       *
+% ************************************************************************* 
+% *                                                                       *
+% * Description:                                                          * 
+% *                                                                       * 
+% * This generates the features used for testing.                         *
+% *                                                                       * 
+% *************************************************************************
+% 
 
     % Parameters
     maskTs = 0.05;

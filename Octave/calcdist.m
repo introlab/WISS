@@ -1,4 +1,8 @@
 function distances = calcdist(data,center)
+%
+% This code is provided by Charles Elkan:
+% http://cseweb.ucsd.edu/~elkan/fastkmeans.html
+%
 %  input: vector of data points, single center or multiple centers
 % output: vector of distances
 

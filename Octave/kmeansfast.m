@@ -1,4 +1,8 @@
 function [centers,mincenter,mindist,q2,quality] = kmeansfast(data,initcenters,method)
+%
+% This code is provided by Charles Elkan:
+% http://cseweb.ucsd.edu/~elkan/fastkmeans.html
+%
 % output: final centers
 % input: data points and initial centers
 % if initcenters is a number k, create k centers and start with these

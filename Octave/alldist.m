@@ -1,4 +1,8 @@
 function centdist = alldist(centers)
+%
+% This code is provided by Charles Elkan:
+% http://cseweb.ucsd.edu/~elkan/fastkmeans.html
+%
 % output: matrix of all pairwise distances
 % input: data points (centers)
 
