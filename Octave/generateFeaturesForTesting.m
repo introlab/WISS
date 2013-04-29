@@ -49,6 +49,10 @@ function [activeFeatures, activeMask, noiseMask, Hl, Bl] = generateFeaturesForTe
     maskTs = 0.05;
     vadTs = 5;
     
+    % Normalize volumes
+    xSeparated = xSeparated / (sqrt(mean(xSeparated.^2)));
+    xPostfiltered = xPostfiltered / (sqrt(mean(xPostfiltered.^2)));
+    
     % Emphasis
     xSeparatedFiltered = filter([1 -0.95],[1],xSeparated);
 
@@ -89,7 +93,7 @@ function [activeFeatures, activeMask, noiseMask, Hl, Bl] = generateFeaturesForTe
             
     end
     
-    xPostfilteredPower(:,1) = xPostfilteredPower(:,1) * 0;
+    xPostfilteredPower(:,1) = xPostfilteredPower(:,1) * 0;    
     
     % Generate filterbank
     H_m = generateFilterbank(frameSize,Fs);
