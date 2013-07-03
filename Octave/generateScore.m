@@ -96,7 +96,7 @@ function [choices,scores] = generateScore(modelsDatabase, activeFeatures, active
         end
         
         % Normalise
-        resultModel(iModel) = sumDiff / nFeatures;
+        resultModel(iModel) = sumDiff / (nFeatures + 1E-99);
         
     end
     
