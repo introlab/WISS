@@ -50,8 +50,8 @@ function [activeFeatures, activeMask, noiseMask, Hl, Bl] = generateFeaturesForTe
     vadTs = 5;
     
     % Normalize volumes
-    xSeparated = xSeparated / (sqrt(mean(xSeparated.^2)));
-    xPostfiltered = xPostfiltered / (sqrt(mean(xPostfiltered.^2)));
+    xSeparated = xSeparated / (sqrt(mean(xSeparated.^2))+1E-99);
+    xPostfiltered = xPostfiltered / (sqrt(mean(xPostfiltered.^2))+1E-99);
     
     % Emphasis
     xSeparatedFiltered = filter([1 -0.95],[1],xSeparated);
@@ -107,7 +107,7 @@ function [activeFeatures, activeMask, noiseMask, Hl, Bl] = generateFeaturesForTe
     postfilteredFeatures = log(xPostfilteredPower * H_m + 1E-20);
     
     % Mask
-    maskFeatures = (exp(postfilteredFeatures) ./ exp(separatedFeatures)) > maskTs;
+    maskFeatures = (exp(postfilteredFeatures) ./ (exp(separatedFeatures)+1E-99)) > maskTs;
         
     % VAD
     sumMask = sum(maskFeatures');
@@ -126,7 +126,7 @@ function [activeFeatures, activeMask, noiseMask, Hl, Bl] = generateFeaturesForTe
     noiseMatrix = (maskFeatures == 0) .* separatedFeatures;
     noiseVector = sum(noiseMatrix);
     noiseDen = sum(maskFeatures == 0);
-    noiseFeaturesMean = noiseVector ./ noiseDen;
+    noiseFeaturesMean = noiseVector ./ (noiseDen +1E-99);
     
     % Get environment features
     Yl = activeFeaturesMean;
